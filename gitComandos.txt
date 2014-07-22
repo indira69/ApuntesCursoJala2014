@@ -22,15 +22,17 @@ git commit -a -m 'nuevo arch' -->hace un commit de todos los archivos que estaba
 Borrado de archivos
 =====================
 git reset --soft HEAD^1		???si se realizo algun commit
-git reset nombreDelArchivo	????si se realizo un add
-git rm nombre del archivo		si solo se creo el archivo sin hacer add
+git reset HEAD README.md   -->saca readme.md de la lista staged
 
 git rm   arch                 -->prepara aarch para borrar, el sgte commit borrara arch del dir
 git rm --cached arch          -->hace que ya no se haga seguimiento al archivo arch, es útil si hemos olvidado omitir en .ignore y no queremos subir este archivo, que continuara en mi directorio de trabajo
-git reset HEAD README.md   -->saca readme.md de la lista staged
 git checkout -- README.md  --> vuelve readme de mi usr al estado del último commit(quitará de readme.md la modificación anterior)
 
+Borrado de directorios
+======================
+git rm -r nombreDirectorio       --> prepara dir para borrado, sgte commit borrara el directorio
 
+Esstado de repo
 =====================
 git status  <--estado de archivos
 git log     <-- commits realizados
@@ -43,6 +45,7 @@ git checkout -b nombre_Rama	crea una rama y se posiciona en una rama
 git push origin nombre_Rama	sube los cambios realizado en una rama
 git pull origin nombre_Rama
 git branch -d nombre_Rama	eliminar una rama
+git branch -D nombre_Rama	eliminar una rama, forzando borrado cuando rama no ha hecho todavía merge y se pierde todo lo de la rama
 git push origin :rama           borra rama de repo remoto name origin
 
 
