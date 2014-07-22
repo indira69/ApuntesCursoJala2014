@@ -3,7 +3,7 @@ $ git config --global user.email johndoe@example.com
 
 $ git config --global core.editor emacs
 $ git config –list   //para ver configuración
-$ para ver el nombre: git config user.name
+$ git config user.name  // para ver el nombre de usuario
 
 http://codehero.co/series/git-desde-cero/
 =============================================
@@ -13,19 +13,38 @@ Para empezar un repositorio
 git init  --> crea un repo de cero
 git clone  url  --> crea un directorio con todo lo del repo clonado
 
+añadiendo archivos a mi repositorio
 =====================
-
 git add  arch                 --> añade a staged area
 git commit -m "nombre commit" -->crea un commit de toda la staged area
 git commit -a -m 'nuevo arch' -->hace un commit de todos los archivos que estaban alguna vez en staged y si existen modificaciones añade directamente al commit sin que esten en el staging area
+
+Borrado de archivos
+=====================
+git reset --soft HEAD^1		???si se realizo algun commit
+git reset nombreDelArchivo	????si se realizo un add
+git rm nombre del archivo		si solo se creo el archivo sin hacer add
+
 git rm   arch                 -->prepara aarch para borrar, el sgte commit borrara arch del dir
-git rm --cached arch          -->hace que ya no se haga seguimiento al archivo arch, es útil si hemos ovidado omitir en .ignore y no queremos subir este archivo, que continuara en mi directorio de trabajo
+git rm --cached arch          -->hace que ya no se haga seguimiento al archivo arch, es útil si hemos olvidado omitir en .ignore y no queremos subir este archivo, que continuara en mi directorio de trabajo
+git reset HEAD README.md   -->saca readme.md de la lista staged
+git checkout -- README.md  --> vuelve readme de mi usr al estado del último commit(quitará de readme.md la modificación anterior)
+
 
 =====================
-git status
-git log
-git diff
+git status  <--estado de archivos
+git log     <-- commits realizados
+git diff    <-- diferencias
 git diff --staged    -->muestra los cambios con lo que esta preparado para commit y working area
+
+trabajos con Ramas
+===================
+git checkout -b nombre_Rama	crea una rama y se posiciona en una rama
+git push origin nombre_Rama	sube los cambios realizado en una rama
+git pull origin nombre_Rama
+git branch -d nombre_Rama	eliminar una rama
+git push origin :rama           borra rama de repo remoto name origin
+
 
 
 =====================
@@ -33,7 +52,5 @@ $git log --pretty=format:"%h - %an - %ar - %s" --graph   -->para ver los commits
 $ git commit --amend --no-edit # Dejamos el mismo mensaje  -->para agregar archivos a el último commit ya realizado
 $ git commit --amend -m "Nuevo mensaje para el cambio"
 
-git reset HEAD README.md   -->saca readme.md de la lista staged
-git checkout -- README.md  --> vuelve readme de mi usr al estado del último commit(quitará de readme.md la modificación anterior)
 
  
